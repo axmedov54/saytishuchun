@@ -1,7 +1,7 @@
 from django.shortcuts import render ,redirect
 from django.contrib.auth.models import User
 # from django.contrib.auth import login,logout,authenticate
-from .models import Post
+from .models import Post,Contact
 
 
 def HomePage(request):
@@ -9,15 +9,15 @@ def HomePage(request):
     return render (request,'index.html',{'posts':Posts})
 
 
-# def contactPage(request):
-#     contact=Contact()
-#     if request.method == 'POST':
-#        contact.username=request.POST.get('name')
-#        contact.email=request.POST.get('email')
-#        contact.message=request.POST.get('message')
-#        contact.save()
-#        print('Contact Saqlandi')
-#        return render (request,'contact.html')
+def contactPage(request):
+    contact=Contact()
+    if request.method == 'POST':
+       contact.username=request.POST.get('name')
+       contact.email=request.POST.get('email')
+       contact.message=request.POST.get('message')
+       contact.message=request.POST.get('phone')
+       contact.save()
+       return redirect ('home')
 
 
 
